@@ -123,7 +123,8 @@ const SearchForm = () => {
             <div className="results-container">
                 {books.map((book) => (
                     <BookCard
-                        key={book.key}
+                        key={book.key} // React key prop for unique identification
+                        bookKey={book.key.split('/').pop()} // Extracting the ID from the key and passing it as bookKey
                         title={book.title}
                         author={Array.isArray(book.author_name) ? book.author_name.join(', ') : 'Unknown Author'}
                     />

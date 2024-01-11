@@ -32,10 +32,12 @@ const BookDetails: React.FC = () => {
     return (
         <div>
             <h1>{bookDetails.title}</h1>
-            <p>Author: {bookDetails.authors.map((author) => author.name).join(', ')}</p>
+            <p>
+                Author: {bookDetails.authors?.map((author) => author.name).join(', ') || 'No authors listed'}
+            </p>
             <p>Description: {bookDetails.description}</p>
         </div>
     );
-};
+}
 
 export default BookDetails;
