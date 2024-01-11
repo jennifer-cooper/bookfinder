@@ -51,3 +51,10 @@ label {
     border-radius: 5px;
     cursor: pointer;
 }
+
+
+.results-info {
+    margin-top: 20px;
+    margin-bottom: 30px;
+
+}
