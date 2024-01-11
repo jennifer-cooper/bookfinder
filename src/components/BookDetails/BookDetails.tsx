@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import "./BookDetails.css";
-
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 interface BookDetailsData {
     title: string;
@@ -37,15 +37,21 @@ const BookDetails: React.FC = () => {
         ? bookDetails.subjects.slice(0, 3).map((subject, index) => (
             <span key={index} className="subject-pill">{subject}</span>
         ))
-        : [<span key="default" className="subject-pill">No Subjects Recorded</span>];
+        : [<span key="default" className="subject-pill">No Subjects Listed</span>];
 
     return (
         <div className='book-detail'>
-            <h3>{bookDetails.title}</h3>
+            <div className = 'backbutton-title'>
+                <button className="back-button">
+                    <ArrowBackIosIcon style={{ fontSize: '12px' }} />
+                    Back
+                </button>
+                <h3>{bookDetails.title}</h3>
+            </div>
             <p>
                 by {bookDetails.authors?.map((author) => author.name).join(', ') || 'No authors listed'}
             </p>
-            <p>Description: {bookDetails.description}</p>
+            <p> {bookDetails.description || 'Description: No description listed'}</p>
             {/* Use the subjectPills variable here */}
             <div>
                 <h2>Subjects</h2>

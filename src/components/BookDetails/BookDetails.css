@@ -26,3 +26,33 @@ h2 {
     color: #3D3C3D;
     text-align: left;
 }
+
+.book-detail {
+    margin-left: 20px;
+    padding-left: 20px
+
+}
+
+.backbutton-title {
+    display: flex; /* This will layout the pills in a row */
+    gap: 18px; /* Adjust the gap between the pills */
+    flex-wrap: wrap; /* This will allow the pills to wrap to the next line if they don't fit */
+    align-items: center; /* Align items vertically in the center */
+
+}
+
+.back-button {
+    padding: 10px 15px;
+    background-color: #B7075F;
+    color: white; /* This sets the text and icon color to white */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex; /* Aligns icon and text horizontally */
+    align-items: center; /* Centers icon and text vertically */
+    justify-content: center; /* Centers content in the button */
+}
+
+.back-button .MuiSvgIcon-root { /* Targeting Material-UI icons within the button */
+    margin-right: 1px; /* Add some space between the icon and the text */
+}
