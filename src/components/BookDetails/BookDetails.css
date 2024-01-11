@@ -1,0 +1,28 @@
+.subject-pills {
+    display: flex; /* This will layout the pills in a row */
+    gap: 8px; /* Adjust the gap between the pills */
+    flex-wrap: wrap; /* This will allow the pills to wrap to the next line if they don't fit */
+}
+
+.subject-pill {
+    display: inline-block;
+    background-color: rgba(183, 7, 95, 0.3); /* Light translucent pink */
+    border-radius: 15px; /* Rounded corners for the pill shape */
+    padding: 5px 10px; /* Padding inside the pills */
+    margin-right: 5px; /* Margin between pills */
+    margin-bottom: 5px; /* Margin between lines of pills if they wrap */
+    color: #B7075F; /* Text color could be the original pink for contrast */
+    font-weight: bold;
+}
+
+h3 {
+    font-size: 26px;
+    color: #3D3C3D;
+    text-align: left;
+}
+
+h2 {
+    font-size: 20px;
+    color: #3D3C3D;
+    text-align: left;
+}
