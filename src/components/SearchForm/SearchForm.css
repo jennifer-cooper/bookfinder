@@ -55,6 +55,34 @@ label {
 
 .results-info {
     margin-top: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
 
+}
+
+.pagination {
+    display: flex; /* Aligns children (buttons) in a row */
+    gap: 10px; /* Adds some space between the buttons */
+    padding-bottom: 20px;
+}
+
+.pagination-button {
+    padding: 5px 10px; /* Reduced padding for smaller buttons */
+    background-color: #B7075F; /* Pink background */
+    color: #fff; /* White text/icon */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+
+}
+
+.pagination-button:disabled {
+    background-color: #E8D4E3; /* Lighter shade of pink or gray */
+    color: #ccc; /* Grayed out arrow */
+    cursor: default;
+}
+
+/* Adjust the size of the icons if needed */
+.pagination-button svg {
+    font-size: 1rem; /* Adjust the size of the icon */
 }

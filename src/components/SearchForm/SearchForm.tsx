@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 import BookCard from '../BookCard/BookCard'; // Make sure the path is correct
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 
 const SearchForm = () => {
@@ -96,6 +98,22 @@ const SearchForm = () => {
             <div className="results-info">
                 Showing {books.length} of {totalResults} results
             </div>
+            <div className="pagination">
+                <button
+                    className="pagination-button"
+                    onClick={() => handleSearch(currentPage - 1)}
+                    disabled={currentPage === 1}
+                >
+                    <ArrowBackIosIcon />
+                </button>
+                <button
+                    className="pagination-button"
+                    onClick={() => handleSearch(currentPage + 1)}
+                    disabled={totalResults <= currentPage * 10}
+                >
+                    <ArrowForwardIosIcon />
+                </button>
+            </div>
             {/* Results container for displaying search results */}
             <div className="results-container">
                 {books.map((book) => (
@@ -106,14 +124,7 @@ const SearchForm = () => {
                     />
                 ))}
             </div>
-            <div className="pagination">
-                <button onClick={() => handleSearch(currentPage - 1)} disabled={currentPage === 1}>
-                    Previous
-                </button>
-                <button onClick={() => handleSearch(currentPage + 1)}>
-                    Next
-                </button>
-            </div>
+
         </>
     );
 }
