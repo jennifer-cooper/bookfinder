@@ -5,6 +5,7 @@ import './index.css';
 import HomePage from './pages/HomePage/HomePage';
 import BookList from "./components/BookList/BookList";
 import BookDetails from "./components/BookDetails/BookDetails";
+import BookDetailsPage from "./pages/BookDetailsPage/BookDetailsPage";
 
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
@@ -12,7 +13,7 @@ root.render(
         <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="book" element={<BookList />} />
-            <Route path="book/:id" element={<BookDetails />} />
+            <Route path="book/:id" element={<BookDetailsPage />} />
         </Routes>
     </BrowserRouter>
 );

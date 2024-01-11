@@ -1,0 +1,29 @@
+body {
+    background-color: #FBF9FA;
+    margin: 0;
+    padding: 0;
+}
+
+/* Remove the margin-left from .holder */
+.holder {
+    padding-top: 120px; /* Space for the fixed header */
+}
+
+.header-banner {
+    width: 100%;
+    background-color: #fff;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Ensure h3 inside header-banner doesn't affect other h3 elements */
+.header-banner h3 {
+    margin-left: 20px;
+    font-size: 26px;
+    color: #3D3C3D;
+    text-align: left;
+}

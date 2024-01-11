@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
 import "./BookDetails.css";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
@@ -7,32 +6,32 @@ interface BookDetailsData {
     title: string;
     authors: { name: string }[];
     description: string;
-    // ... other properties as needed ...
-    subjects: string[]; // Add this line to include subjects
-
+    subjects: string[]; // Assuming this is included in your data structure
 }
 
-const BookDetails: React.FC = () => {
+interface BookDetailsProps {
+    id: string; // Add this to accept 'id' as a prop
+}
+
+const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     const [bookDetails, setBookDetails] = useState<BookDetailsData | null>(null);
-    const params = useParams<{ id: string }>(); // Extract the 'id' parameter from the URL
 
     useEffect(() => {
         const fetchBookDetails = async () => {
-            if (params.id) {
-                const response = await fetch(`https://openlibrary.org/works/${params.id}.json`);
+            if (id) {
+                const response = await fetch(`https://openlibrary.org/works/${id}.json`);
                 const data = await response.json();
                 setBookDetails(data);
             }
         };
 
         fetchBookDetails();
-    }, [params.id]);
+    }, [id]); // Depend on 'id' prop
 
     if (!bookDetails) {
         return <div>Loading...</div>;
     }
 
-    // Check if subjects are present and have length; if not, set a default array with one "No Subjects Recorded" entry
     const subjectPills = (bookDetails.subjects && bookDetails.subjects.length > 0)
         ? bookDetails.subjects.slice(0, 3).map((subject, index) => (
             <span key={index} className="subject-pill">{subject}</span>
@@ -41,7 +40,7 @@ const BookDetails: React.FC = () => {
 
     return (
         <div className='book-detail'>
-            <div className = 'backbutton-title'>
+            <div className='backbutton-title'>
                 <button className="back-button">
                     <ArrowBackIosIcon style={{ fontSize: '12px' }} />
                     Back
@@ -52,7 +51,6 @@ const BookDetails: React.FC = () => {
                 by {bookDetails.authors?.map((author) => author.name).join(', ') || 'No authors listed'}
             </p>
             <p> {bookDetails.description || 'Description: No description listed'}</p>
-            {/* Use the subjectPills variable here */}
             <div>
                 <h2>Subjects</h2>
                 <div className="subject-pills">
@@ -61,6 +59,6 @@ const BookDetails: React.FC = () => {
             </div>
         </div>
     );
-}
+};
 
 export default BookDetails;
