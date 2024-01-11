@@ -127,6 +127,7 @@ const SearchForm = () => {
                         bookKey={book.key.split('/').pop()} // Extracting the ID from the key and passing it as bookKey
                         title={book.title}
                         author={Array.isArray(book.author_name) ? book.author_name.join(', ') : 'Unknown Author'}
+                        editionCount={book.edition_count}
                     />
                 ))}
             </div>
