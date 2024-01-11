@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import './SearchForm.css';
 import BookCard from '../BookCard/BookCard';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
@@ -6,38 +6,47 @@ import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import { SearchContext } from '../../SearchContext';
 
 const SearchForm = () => {
-    const [title, setTitle] = useState('');
-    const [author, setAuthor] = useState('');
-    const [subject, setSubject] = useState('');
     const {
         searchResults,
         setSearchResults,
         currentPage,
         setCurrentPage,
         totalResults,
-        setTotalResults
+        setTotalResults,
+        searchTerms,
+        setSearchTerms
     } = useContext(SearchContext);
+
+    // Local state for input fields, initialized with values from context
+    const [title, setTitle] = useState(searchTerms.title);
+    const [author, setAuthor] = useState(searchTerms.author);
+    const [subject, setSubject] = useState(searchTerms.subject);
+
+    useEffect(() => {
+        // Update the context whenever the local state changes
+        setSearchTerms({ title, author, subject });
+    }, [title, author, subject, setSearchTerms]);
 
     const RESULTS_PER_PAGE = 10;
 
     // Function to handle page change
     const changePage = (newPage: number) => {
         if (newPage >= 1 && newPage <= Math.ceil(totalResults / RESULTS_PER_PAGE)) {
-            handleSearch(newPage);
+            handleSearch(newPage, false); // Updated to include a flag for new search
         }
     };
 
+    const handleSearch = async (page = 1, isNewSearch = true) => {
+        if (isNewSearch) {
+            setCurrentPage(1);
+        } else {
+            setCurrentPage(page);
+        }
 
-    const handleSearch = async (page = 1) => {
-        setCurrentPage(page);
-        let searchTerms = [];
-        if (title) searchTerms.push(`title:${encodeURIComponent(title)}`);
-        if (author) searchTerms.push(`author:${encodeURIComponent(author)}`);
-        if (subject) searchTerms.push(`subject:${encodeURIComponent(subject)}`);
+        let searchQuery = `${title ? `title:${encodeURIComponent(title)}` : ''}${author ? `+author:${encodeURIComponent(author)}` : ''}${subject ? `+subject:${encodeURIComponent(subject)}` : ''}`;
 
-        let searchTerm = searchTerms.join('+');
-        if (searchTerm) {
-            let query = `https://openlibrary.org/search.json?q=${searchTerm}&fields=key,title,author_name,edition_count&limit=10&page=${page}`;
+        if (searchQuery) {
+            let query = `https://openlibrary.org/search.json?q=${searchQuery}&fields=key,title,author_name,edition_count&limit=10&page=${page}`;
             try {
                 const response = await fetch(query);
                 const data = await response.json();
@@ -55,8 +64,6 @@ const SearchForm = () => {
 
     const startIdx = (currentPage - 1) * RESULTS_PER_PAGE + 1;
     const endIdx = Math.min(currentPage * RESULTS_PER_PAGE, totalResults);
-
-
 
     return (
         <>
