@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import "./BookDetails.css";
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
+import { useNavigate } from 'react-router-dom'; // Import useNavigate;
+
+
 
 interface BookDetailsData {
     title: string;
@@ -14,6 +17,7 @@ interface BookDetailsProps {
 }
 
 const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
+    const navigate = useNavigate(); // Initialize the navigate function
     const [bookDetails, setBookDetails] = useState<BookDetailsData | null>(null);
 
     useEffect(() => {
@@ -23,6 +27,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                 const data = await response.json();
                 setBookDetails(data);
             }
+
         };
 
         fetchBookDetails();
@@ -31,6 +36,10 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     if (!bookDetails) {
         return <div>Loading...</div>;
     }
+
+    const handleBackButtonClick = () => {
+        navigate(-1); // Navigate back to the previous page
+    };
 
     const subjectPills = (bookDetails.subjects && bookDetails.subjects.length > 0)
         ? bookDetails.subjects.slice(0, 3).map((subject, index) => (
@@ -41,7 +50,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     return (
         <div className='book-detail'>
             <div className='backbutton-title'>
-                <button className="back-button">
+                <button className="back-button" onClick={handleBackButtonClick}>
                     <ArrowBackIosIcon style={{ fontSize: '12px' }} />
                     Back
                 </button>
