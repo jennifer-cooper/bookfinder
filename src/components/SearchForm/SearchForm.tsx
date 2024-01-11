@@ -15,6 +15,8 @@ const SearchForm = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
 
+    const RESULTS_PER_PAGE = 10;
+
 
 
     // on button click
@@ -54,6 +56,9 @@ const SearchForm = () => {
     const onSearchButtonClick = () => {
         handleSearch(); // Calls handleSearch with the default page
     };
+
+    const startIdx = (currentPage - 1) * RESULTS_PER_PAGE + 1;
+    const endIdx = Math.min(currentPage * RESULTS_PER_PAGE, totalResults);
 
     return (
         <>
@@ -96,7 +101,7 @@ const SearchForm = () => {
                 {/* End of wrapper div */}
             </div>
             <div className="results-info">
-                Showing {books.length} of {totalResults} results
+                Showing {startIdx} to {endIdx} of {totalResults} results
             </div>
             <div className="pagination">
                 <button
