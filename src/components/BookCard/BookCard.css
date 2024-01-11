@@ -1,0 +1,28 @@
+.book-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    margin-bottom: 5px; /* Add space between cards */
+    transition: box-shadow 0.3s ease;
+    width:75%
+}
+
+.book-card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.book-title {
+    margin: 0;
+    color: #333;
+    font-size: 1.2rem; /* A larger font size for the title */
+    margin-bottom: 10px; /* Space between title and author */
+}
+
+.book-author, .book-editions {
+    margin: 0;
+    color: #777;
+    font-size: 1rem;
+}
+
+/* You can add more styling as per your design requirements */
