@@ -1,6 +1,6 @@
 // EditionCard.tsx
 import React from 'react';
-import './BookCard.css';
+import './EditionCard.css';
 
 interface EditionCardProps {
     edition: {
@@ -20,8 +20,8 @@ const EditionCard: React.FC<EditionCardProps> = ({ edition }) => {
         <div className="edition-card">
             <h4>{title}</h4>
             <div>Publish Date: {publish_date}</div>
-            <div>Publisher: {publishers.join(', ')}</div>
-            <div>Language: {languages.join(', ')}</div>
+            <div>Publisher: {publishers?.join(', ') || 'N/A'}</div>
+            <div>Language: {languages?.join(', ') || 'N/A'}</div>
             <div>ISBN-10: {isbn_10?.join(', ') || 'N/A'}</div>
             <div>ISBN-13: {isbn_13?.join(', ') || 'N/A'}</div>
         </div>

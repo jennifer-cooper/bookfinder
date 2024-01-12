@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import "./BookDetails.css";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate;
-
+import EditionCard from "../EditionCard/EditionCard";
 
 
 interface BookDetailsData {
@@ -17,8 +17,9 @@ interface BookDetailsProps {
 }
 
 const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
-    const navigate = useNavigate(); // Initialize the navigate function
+    const navigate = useNavigate();
     const [bookDetails, setBookDetails] = useState<BookDetailsData | null>(null);
+    const [editions, setEditions] = useState<any[]>([]); // State to store editions
 
     useEffect(() => {
         const fetchBookDetails = async () => {
@@ -26,12 +27,16 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                 const response = await fetch(`https://openlibrary.org/works/${id}.json`);
                 const data = await response.json();
                 setBookDetails(data);
-            }
 
+                // Fetch editions
+                const editionsResponse = await fetch(`https://openlibrary.org/works/${id}/editions.json`);
+                const editionsData = await editionsResponse.json();
+                setEditions(editionsData.entries);
+            }
         };
 
         fetchBookDetails();
-    }, [id]); // Depend on 'id' prop
+    }, [id]);
 
     if (!bookDetails) {
         return <div>Loading...</div>;
@@ -64,6 +69,15 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                 <h2>Subjects</h2>
                 <div className="subject-pills">
                     {subjectPills}
+                </div>
+            </div>
+            {/* Render Editions */}
+            <div>
+                <h2>Editions</h2>
+                <div>
+                    {editions.map((edition, index) => (
+                        <EditionCard key={index} edition={edition} />
+                    ))}
                 </div>
             </div>
         </div>
