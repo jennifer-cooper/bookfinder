@@ -20,9 +20,7 @@
 
 }
 
-.edition-link:hover {
-    opacity: 0.8; /* Slightly transparent on hover */
-}
+
 .publish-date, .publisher {
     margin: 0;
     color: #777;
