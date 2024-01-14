@@ -3,7 +3,7 @@ import './SearchForm.css';
 import BookCard from '../BookCard/BookCard';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import { SearchContext } from '../../SearchContext';
+import { SearchContext } from '../../contexts/SearchContext';
 
 const SearchForm = () => {
     const {

@@ -2,7 +2,7 @@ import React from 'react';
 import SearchContainer from '../../components/SearchContainer/SearchContainer';
 import { Outlet } from 'react-router-dom';
 
-const HomePage = () => {
+const SearchHomePage = () => {
     return (
         <main>
             <SearchContainer />
@@ -11,4 +11,4 @@ const HomePage = () => {
     )
 }
 
-export default HomePage
+export default SearchHomePage

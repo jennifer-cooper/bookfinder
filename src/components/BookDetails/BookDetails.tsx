@@ -3,7 +3,7 @@ import "./BookDetails.css";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
 import { useNavigate } from 'react-router-dom'; // Import useNavigate;
 import EditionCard from "../EditionCard/EditionCard";
-import PaginationEdition from "../../PaginationEdition/PaginationEdition";
+import PaginationEdition from "../PaginationEdition/PaginationEdition";
 
 
 interface BookDetailsData {
