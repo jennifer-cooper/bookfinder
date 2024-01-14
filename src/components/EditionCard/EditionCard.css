@@ -1,0 +1,47 @@
+.edition-card {
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    margin-bottom: 5px; /* Add space between cards */
+    transition: box-shadow 0.3s ease;
+    width:75%;
+}
+
+/* You can add more styling as per your design requirements */
+
+.edition-link {
+    color: #B7075F; /* Pink color */
+    font-size: 1.2rem;
+    margin-bottom: 10px; /* Space between title and author */
+
+}
+
+.edition-link:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+}
+.publish-date, .publisher {
+    margin: 0;
+    color: #777;
+    font-size: 1rem;
+}
+
+.publish-date{
+    font-weight: bold;
+}
+
+.year-publish {
+    display: flex;
+    align-items: center; /* Align vertically */
+    justify-content: start; /* Align horizontally */
+    gap: 10px; /* Space between items */
+}
+
+.language-isbn {
+    display: flex;
+    justify-content: space-between; /* Align items to each side */
+    align-items: center; /* Align items vertically */
+}

@@ -17,13 +17,19 @@ const EditionCard: React.FC<EditionCardProps> = ({ edition }) => {
     const { title, publish_date, publishers, languages, isbn_10, isbn_13 } = edition;
 
     return (
+
+
         <div className="edition-card">
-            <h4>{title}</h4>
-            <div>Publish Date: {publish_date}</div>
-            <div>Publisher: {publishers?.join(', ') || 'N/A'}</div>
-            <div>Language: {languages?.join(', ') || 'N/A'}</div>
-            <div>ISBN-10: {isbn_10?.join(', ') || 'N/A'}</div>
-            <div>ISBN-13: {isbn_13?.join(', ') || 'N/A'}</div>
+            <h4 className="edition-link">{title}</h4>
+            <div className="year-publish">
+                <p className="publish-date">{publish_date}</p>
+                <span className="publisher">{publishers?.join(', ') || 'N/A'}</span>
+            </div>
+            <div className="language-isbn">
+                <p>Language: {languages?.join(', ') || 'N/A'}</p>
+                <span className="isbn">ISBN-10: {isbn_10?.join(', ') || 'N/A'}</span>
+            </div>
+
         </div>
     );
 };
