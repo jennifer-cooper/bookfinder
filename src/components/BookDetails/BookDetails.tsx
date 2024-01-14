@@ -24,6 +24,23 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
     const RESULTS_PER_PAGE = 10;
+    const [showFullDescription, setShowFullDescription] = useState(false); //adding state to toggle full description
+
+    const getFirstTwoSentences = (text: string | undefined | null) => {
+        if (typeof text !== 'string') {
+            return '';
+        }
+
+        const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
+        return sentences.slice(0, 2).join(' ');
+    };
+
+
+
+    const toggleFullDescription = () => {
+        setShowFullDescription(!showFullDescription);
+    };
+
 
     useEffect(() => {
         const fetchBookDetails = async () => {
@@ -69,6 +86,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
         : [<span key="default" className="subject-pill">No Subjects Listed</span>];
 
 
+
     return (
         <div className='book-detail'>
             <div className='backbutton-title'>
@@ -81,7 +99,19 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
             <p>
                 by {bookDetails.authors?.map((author) => author.name).join(', ') || 'No authors listed'}
             </p>
-            <p> {bookDetails.description || 'Description: No description listed'}</p>
+            <p>
+                {showFullDescription || !bookDetails?.description
+                    ? bookDetails?.description
+                    : `${getFirstTwoSentences(bookDetails.description)}... `}
+            </p>
+            {bookDetails?.description && bookDetails.description.length > getFirstTwoSentences(bookDetails.description).length && (
+                <div className="more-link-container">
+                    <span className="more-link" onClick={toggleFullDescription}>
+                        <h4> {showFullDescription ? 'Less' : 'More...'} </h4>
+                    </span>
+                </div>
+            )}
+
             <div>
                 <h2>Subjects</h2>
                 <div className="subject-pills">

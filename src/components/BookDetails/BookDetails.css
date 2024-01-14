@@ -58,3 +58,13 @@ h2 {
 .back-button .MuiSvgIcon-root { /* Targeting Material-UI icons within the button */
     margin-right: 1px; /* Add some space between the icon and the text */
 }
+
+.more-link {
+    color: #B7075F; /* Pink color */
+    margin-bottom: 10px; /* Space between title and author */
+    text-decoration: underline;
+    }
+
+.more-link:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
+}
