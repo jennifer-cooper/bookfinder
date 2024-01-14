@@ -18,7 +18,7 @@ const BookCard: React.FC<BookCardProps> = ({ bookKey, title, author, editionCoun
         </h4>
         <div className="book-meta">
             <p className="book-author">by {author}</p>
-            <span className="book-editions">{editionCount} editions</span>
+            <span className="book-editions">{editionCount} {editionCount === 1 ? 'edition' : 'editions'}</span>
         </div>
     </div>
 );
