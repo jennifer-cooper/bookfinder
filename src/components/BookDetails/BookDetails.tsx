@@ -1,3 +1,25 @@
+/**
+ * BookDetails Component
+ * Purpose:
+ * Displays detailed information about a specific book based on selected ID.
+ * Shows the book's title, author(s), an expandable description, subjects, and edition cards.
+ * Props:
+ * id (string): The unique identifier for the book. Used to fetch book details and editions.
+ * State:
+ * bookDetails (object|null): Stores the detailed information about the book.
+ * editions (array): Stores the editions of the book.
+ * currentPage (number): The current page number in the editions pagination.
+ * totalResults (number): Total number of editions available for this book.
+ * showFullDescription (boolean): Flag to toggle between showing the full description or a brief one.
+ * Hooks:
+ * useEffect: Fetches the book details and editions from the Open Library API based on the provided book ID.
+ * useState: Manages the states mentioned above.
+ * Handlers:
+ * getFirstTwoSentences: Extracts and returns the first two sentences from the book's description.
+ * toggleFullDescription: Toggles the state to show or hide the full book description.
+ * changePage: Function to change the current page in the editions pagination.
+ **/
+
 import React, { useState, useEffect } from 'react';
 import "./BookDetails.css";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
@@ -121,12 +143,12 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
             <h2>Editions</h2>
             {/* Pagination Component */}
             <div>
-            <PaginationEdition
-                currentPage={currentPage}
-                totalResults={totalResults}
-                changePage={changePage}
-                resultsPerPage={RESULTS_PER_PAGE}
-            />
+                <PaginationEdition
+                    currentPage={currentPage}
+                    totalResults={totalResults}
+                    changePage={changePage}
+                    resultsPerPage={RESULTS_PER_PAGE}
+                />
             </div>
             <div>
                 {displayedEditions.map((edition, index) => (
@@ -140,6 +162,3 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
 };
 
 export default BookDetails;
-
-
-

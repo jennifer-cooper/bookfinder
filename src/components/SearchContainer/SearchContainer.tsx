@@ -1,3 +1,13 @@
+/**
+ * SearchContainer Component
+ * Purpose:
+ * - Wrapper and layout for the search functionality of the app.
+ * - Includes the SearchForm component along with additional context and instructions for the user.
+ * - Main interface where users conduct their search.
+ * Usage:
+ * Separates the layout and styling of the search section from the search functionality itself.
+ **/
+
 import React from 'react';
 import SearchForm from "../SearchForm/SearchForm";
 import "./SearchContainer.css";

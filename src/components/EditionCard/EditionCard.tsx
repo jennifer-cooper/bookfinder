@@ -1,4 +1,27 @@
-// EditionCard.tsx
+/**
+ * EditionCard Component
+ * Purpose:
+ * - Displays the details of a specific edition of the selected book.
+ * - Includes the edition title, publication date, publishers, (fetched) language, and ISBN numbers (either ISBN-10/13).
+ * - Dynamically fetches/displays the name of the language from the API using the language key from the edition data.
+ *
+ * Props:
+ * edition (object): Contains details of the book edition, including:
+ *   - title (string), publish_date (string)
+ *   - publishers (array of strings): An array of publishers' names.
+ *   - languages (array of objects): An array where each object contains a key for a language ("/languages/eng").
+ *   - isbn_10 (array of strings, optional): An array of ISBN-10 numbers.
+ *   - isbn_13 (array of strings, optional): An array of ISBN-13 numbers.
+ *
+ * State:
+ * - languageName (string): Stores the name of the language fetched based on the language key.
+ *
+ * useEffect Hook:
+ * - Fetches the language name using the provided language key from the Open Library API.
+ * - Updates the `languageName` state with the fetched language name or 'Unavailable' in case of an error.
+
+**/
+
 import React, { useState, useEffect } from 'react';
 import './EditionCard.css';
 

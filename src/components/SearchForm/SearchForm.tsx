@@ -1,3 +1,25 @@
+/**
+ * SearchForm Component
+ * Purpose:
+ * - Provides an interface for users to search books by title, author, and subject.
+ * - Allows pagination to navigate through search results.
+ * - Displays list of books from the search using the BookCard component.
+ * Context:
+ * - Uses SearchContext to share search-related state and functions across the component tree.
+ * State:
+ * - Local states for title, author, and subject to handle input fields.
+ * - Local states are initialized and updated based on the global search context.
+ * Functions:
+ * - handleSearch: Fetches search results based on the query constructed from title, author, and subject.
+ * - changePage: Handles pagination by changing the current page and fetching the corresponding search results.
+ * Usage:
+ * - Users input search criteria click the 'Search' to find books.
+ * - Users can navigate through search results pages using the pagination feature.
+ * Props:
+ * Uses SearchContext for its data and state management.
+ **/
+
+
 import React, { useState, useContext, useEffect } from 'react';
 import './SearchForm.css';
 import BookCard from '../BookCard/BookCard';

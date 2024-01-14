@@ -1,4 +1,14 @@
-// PaginationEdition.tsx
+/**
+ * PaginationEdition Component
+ * Purpose:
+ * - Provides pagination functionality for book editions allowing users to navigate between pages.
+ * Props:
+ *  - currentPage (number): The current page number.
+ *  - totalResults (number): The total number of editions for pagination.
+ *  - changePage (function): A function to handle the page change.
+ *  - resultsPerPage (number): The number of results to display per page.
+ * **/
+
 import React from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
