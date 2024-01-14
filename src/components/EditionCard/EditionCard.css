@@ -8,7 +8,7 @@
     padding-bottom: 1px;
     margin-bottom: 5px; /* Add space between cards */
     transition: box-shadow 0.3s ease;
-    width:75%;
+    width:100%;
 }
 
 /* You can add more styling as per your design requirements */
@@ -19,7 +19,6 @@
     margin-bottom: 10px; /* Space between title and author */
 
 }
-
 
 .publish-date, .publisher {
     margin: 0;
@@ -42,4 +41,8 @@
     display: flex;
     justify-content: space-between; /* Align items to each side */
     align-items: center; /* Align items vertically */
+}
+
+.lang, .isbn{
+    color: #777;
 }

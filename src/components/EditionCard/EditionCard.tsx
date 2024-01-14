@@ -50,7 +50,7 @@ const EditionCard: React.FC<EditionCardProps> = ({ edition }) => {
                 <span className="publisher">{publishers?.join(', ') || 'N/A'}</span>
             </div>
             <div className="language-isbn">
-                <p>Language: {languageName || 'N/A'}</p>
+                <p className="lang">Language: {languageName || 'N/A'}</p>
                 <span className="isbn">{isbnLabel}: {displayIsbn}</span>
             </div>
         </div>

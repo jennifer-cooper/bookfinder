@@ -2,6 +2,8 @@
 import React from 'react';
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import './PaginationEdition.css';
+
 
 interface PaginationProps {
     currentPage: number;

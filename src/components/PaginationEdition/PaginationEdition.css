@@ -1,6 +1,6 @@
 .editions-info {
     margin-top: 20px;
-    margin-bottom: 20px;
+    margin-bottom: 10px
 }
 
 .pagination {
@@ -30,3 +30,4 @@
 .pagination-button svg {
     font-size: 1rem; /* Adjust the size of the icon */
 }
+

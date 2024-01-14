@@ -4,11 +4,6 @@ body {
     padding: 0;
 }
 
-/* Remove the margin-left from .holder */
-.holder {
-    padding-top: 120px; /* Space for the fixed header */
-}
-
 .header-banner {
     width: 100%;
     background-color: #fff;
