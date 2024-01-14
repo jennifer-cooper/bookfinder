@@ -15,6 +15,9 @@ interface EditionCardProps {
 
 const EditionCard: React.FC<EditionCardProps> = ({ edition }) => {
     const { title, publish_date, publishers, languages, isbn_10, isbn_13 } = edition;
+    // Determine which ISBN to display
+    const displayIsbn = isbn_10 && isbn_10.length > 0 ? isbn_10.join(', ') : (isbn_13 && isbn_13.length > 0 ? isbn_13.join(', ') : 'N/A');
+    const isbnLabel = isbn_10 && isbn_10.length > 0 ? 'ISBN-10' : 'ISBN-13';
 
     return (
 
@@ -27,7 +30,7 @@ const EditionCard: React.FC<EditionCardProps> = ({ edition }) => {
             </div>
             <div className="language-isbn">
                 <p>Language: {languages?.join(', ') || 'N/A'}</p>
-                <span className="isbn">ISBN-10: {isbn_10?.join(', ') || 'N/A'}</span>
+                <span className="isbn">{isbnLabel}: {displayIsbn}</span>
             </div>
 
         </div>
