@@ -1,11 +1,11 @@
 import React from 'react';
-import Header from '../../components/Header/Header';
+import SearchContainer from '../../components/SearchContainer/SearchContainer';
 import { Outlet } from 'react-router-dom';
 
 const HomePage = () => {
     return (
         <main>
-            <Header />
+            <SearchContainer />
             <Outlet />
         </main>
     )
