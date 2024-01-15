@@ -15,7 +15,7 @@
  * useEffect: Fetches the book details and editions from the Open Library API based on the provided book ID.
  * useState: Manages the states mentioned above.
  * Handlers:
- * getFirstTwoSentences: Extracts and returns the first two sentences from the book's description.
+ * getPreviewText: Extracts and returns the first 350 characters of the book's description.
  * toggleFullDescription: Toggles the state to show or hide the full book description.
  * changePage: Function to change the current page in the editions pagination.
  **/
@@ -55,13 +55,11 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     const [authorNames, setAuthorNames] = useState<string[]>([]);
 
 
-    const getFirstTwoSentences = (text: string | undefined | null) => {
-        if (typeof text !== 'string') {
-            return '';
+    const getPreviewText = (text?: string) => {
+        if (typeof text === 'string' && text.length > 350) {
+            return text.slice(0, 350) + '...';
         }
-
-        const sentences = text.match(/[^.!?]+[.!?]+/g) || [];
-        return sentences.slice(0, 2).join(' ');
+        return text;
     };
 
 
@@ -144,15 +142,15 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
             <p>
                 {showFullDescription || !bookDetails?.description
                     ? bookDetails?.description
-                    : `${getFirstTwoSentences(bookDetails.description)}... `}
+                    : getPreviewText(bookDetails?.description)}
+                {bookDetails?.description && bookDetails.description.length > 350 && (
+                    <div className="more-link-container">
+                        <span className="more-link" onClick={toggleFullDescription}>
+                            {showFullDescription ? 'Less' : 'More...'}
+                        </span>
+                    </div>
+                )}
             </p>
-            {bookDetails?.description && bookDetails.description.length > getFirstTwoSentences(bookDetails.description).length && (
-                <div className="more-link-container">
-                    <span className="more-link" onClick={toggleFullDescription}>
-                        <h4> {showFullDescription ? 'Less' : 'More...'} </h4>
-                    </span>
-                </div>
-            )}
 
             <div>
                 <h2>Subjects</h2>
