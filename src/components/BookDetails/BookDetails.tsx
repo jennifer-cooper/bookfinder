@@ -55,11 +55,20 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     const [authorNames, setAuthorNames] = useState<string[]>([]);
 
 
-    const getPreviewText = (text?: string) => {
-        if (typeof text === 'string' && text.length > 350) {
+    const getPreviewText = (description?: string | { type: string; value: string }) => {
+        let text = '';
+
+        if (typeof description === 'string') {
+            text = description;
+        } else if (description && typeof description === 'object' && 'value' in description) {
+            text = description.value;
+        }
+
+        if (text.length > 350) {
             return text.slice(0, 350) + '...';
         }
-        return text;
+
+        return text || 'No description listed';
     };
 
 
@@ -141,13 +150,13 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
             </p>
             <p>
                 {showFullDescription || !bookDetails?.description
-                    ? bookDetails?.description
+                    ? getPreviewText(bookDetails?.description)
                     : getPreviewText(bookDetails?.description)}
-                {bookDetails?.description && bookDetails.description.length > 350 && (
+                {bookDetails?.description && getPreviewText(bookDetails?.description).length > 350 && (
                     <div className="more-link-container">
-                        <span className="more-link" onClick={toggleFullDescription}>
-                            {showFullDescription ? 'Less' : 'More...'}
-                        </span>
+            <span className="more-link" onClick={toggleFullDescription}>
+                {showFullDescription ? 'Less' : 'More...'}
+            </span>
                     </div>
                 )}
             </p>
