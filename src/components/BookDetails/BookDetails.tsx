@@ -149,9 +149,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                 by {authorNames.join(', ') || 'No authors listed'}
             </p>
             <p>
-                {showFullDescription || !bookDetails?.description
-                    ? getPreviewText(bookDetails?.description)
-                    : getPreviewText(bookDetails?.description)}
+                {showFullDescription ? bookDetails?.description : getPreviewText(bookDetails?.description)}
                 {bookDetails?.description && getPreviewText(bookDetails?.description).length > 350 && (
                     <div className="more-link-container">
             <span className="more-link" onClick={toggleFullDescription}>
