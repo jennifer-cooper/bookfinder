@@ -30,11 +30,16 @@ import PaginationEdition from "../PaginationEdition/PaginationEdition";
 
 interface BookDetailsData {
     title: string;
-    authors: { name: string }[];
+    authors: { author: { key: string } }[]; // Updated to match the API response
     description: string;
     subjects: string[]; // Assuming this is included in your data structure
 }
 
+interface AuthorObject {
+    author: {
+        key: string;
+    };
+}
 interface BookDetailsProps {
     id: string; // Add this to accept 'id' as a prop
 }
@@ -47,6 +52,8 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     const [totalResults, setTotalResults] = useState(0);
     const RESULTS_PER_PAGE = 10;
     const [showFullDescription, setShowFullDescription] = useState(false); //adding state to toggle full description
+    const [authorNames, setAuthorNames] = useState<string[]>([]);
+
 
     const getFirstTwoSentences = (text: string | undefined | null) => {
         if (typeof text !== 'string') {
@@ -71,6 +78,19 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                 const response = await fetch(`https://openlibrary.org/works/${id}.json`);
                 const data = await response.json();
                 setBookDetails(data);
+
+                // Check if authors data is available
+                if (data.authors && data.authors.length > 0) {
+                    // Fetch author names
+                    const fetchedAuthorNames = await Promise.all(
+                        data.authors.map(async (authorObj: AuthorObject) => {
+                            const authorResponse = await fetch(`https://openlibrary.org${authorObj.author.key}.json`);
+                            const authorData = await authorResponse.json();
+                            return authorData.name;
+                        })
+                    );
+                    setAuthorNames(fetchedAuthorNames); // Update the state with fetched author names
+                }
 
                 // Fetch editions
                 const editionsResponse = await fetch(`https://openlibrary.org/works/${id}/editions.json`);
@@ -119,7 +139,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                 <h3>{bookDetails.title}</h3>
             </div>
             <p>
-                by {bookDetails.authors?.map((author) => author.name).join(', ') || 'No authors listed'}
+                by {authorNames.join(', ') || 'No authors listed'}
             </p>
             <p>
                 {showFullDescription || !bookDetails?.description
