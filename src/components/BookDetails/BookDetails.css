@@ -59,9 +59,15 @@ h2 {
 
 .more-link {
     color: #B7075F; /* Pink color */
-    margin-bottom: 10px; /* Space between title and author */
     text-decoration: underline;
-    }
+    font-weight: bold;
+}
+
+.more-link-container {
+    margin-top: 25px;
+    margin-bottom: 25px;
+
+}
 
 .more-link:hover {
     opacity: 0.8; /* Slightly transparent on hover */
