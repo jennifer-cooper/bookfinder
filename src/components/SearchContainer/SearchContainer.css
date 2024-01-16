@@ -1,16 +1,14 @@
-/* Apply to the body of your document */
 body {
     background-color: #FBF9FA;
 }
 
-/* Apply the background color and ensure full width */
 .main-content {
-    background-color: #FBF9FA; /* This might be redundant if the body has the same color */
+    background-color: #FBF9FA;
     width: 100%;
-    padding: 20px; /* Leave in as aligns with Header Open Library title */
-    box-sizing: border-box; /* Include padding in width calculation */
+    padding: 20px;
+    box-sizing: border-box;
     margin-left: 20px;
-    padding-top: 125px; /* Moves the Search below the header */
+    padding-top: 125px;
 }
 
 h3 {

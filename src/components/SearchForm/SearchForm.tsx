@@ -1,22 +1,22 @@
 /**
  * SearchForm Component
  * Purpose:
- * - Provides an interface for users to search books by title, author, and subject.
- * - Allows pagination to navigate through search results.
- * - Displays list of books from the search using the BookCard component.
+ * Provides an interface for users to search books by title, author, and subject.
+ * Allows pagination to navigate through search results.
+ * Displays list of books from the search using the BookCard component.
  * Context:
- * - Uses SearchContext to share search-related state and functions across the component tree.
+ * Uses SearchContext to share search-related state and functions across the component tree.
  * State:
- * - Local states for title, author, and subject to handle input fields.
- * - Local states are initialized and updated based on the global search context.
+ * Local states for title, author, and subject to handle input fields.
+ * Local states are initialized and updated based on the global search context.
  * Functions:
- * - handleSearch: Fetches search results based on the query constructed from title, author, and subject.
- * - changePage: Handles pagination by changing the current page and fetching the corresponding search results.
+ * handleSearch: Fetches search results based on the query constructed from title, author, and subject.
+ * changePage: Handles pagination by changing the current page and fetching the corresponding search results.
  * Usage:
- * - Users input search criteria click the 'Search' to find books.
- * - Users can navigate through search results pages using the pagination feature.
+ * Users input search criteria then click the 'Search' button to find books.
+ * Users can navigate through search results pages using the pagination feature.
  * Props:
- * Uses SearchContext for its data and state management.
+ * Uses SearchContext for data and state management.
  **/
 
 
@@ -39,22 +39,20 @@ const SearchForm = () => {
         setSearchTerms
     } = useContext(SearchContext);
 
-    // Local state for input fields, initialized with values from context
     const [title, setTitle] = useState(searchTerms.title);
     const [author, setAuthor] = useState(searchTerms.author);
     const [subject, setSubject] = useState(searchTerms.subject);
 
     useEffect(() => {
-        // Update the context whenever the local state changes
         setSearchTerms({ title, author, subject });
     }, [title, author, subject, setSearchTerms]);
 
     const RESULTS_PER_PAGE = 10;
 
-    // Function to handle page change
+
     const changePage = (newPage: number) => {
         if (newPage >= 1 && newPage <= Math.ceil(totalResults / RESULTS_PER_PAGE)) {
-            handleSearch(newPage, false); // Updated to include a flag for new search
+            handleSearch(newPage, false);
         }
     };
 
@@ -90,7 +88,7 @@ const SearchForm = () => {
     return (
         <>
             <div className="search-fields-container">
-                <div className="inputs-and-button-container"> {/* Wrapper div */}
+                <div className="inputs-and-button-container">
                     <div className="input-field">
                         <label htmlFor="title">Title</label>
                         <input
@@ -125,7 +123,6 @@ const SearchForm = () => {
                         <button className="search-button" onClick={onSearchButtonClick}>Search</button>
                     </div>
                 </div>
-                {/* End of wrapper div */}
             </div>
             <div className="results-info">
                 Showing {startIdx} to {endIdx} of {totalResults} results
@@ -143,10 +140,9 @@ const SearchForm = () => {
                     onClick={() => changePage(currentPage + 1)}
                     disabled={totalResults <= currentPage * RESULTS_PER_PAGE}
                 >
-                    <ArrowForwardIosIcon /> {/* Correct icon for the next page */}
+                    <ArrowForwardIosIcon />
                 </button>
             </div>
-            {/* Results container for displaying search results */}
             <div className="results-container">
                 {searchResults.map((book) => (
                     <BookCard

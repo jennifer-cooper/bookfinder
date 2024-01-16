@@ -44,7 +44,7 @@ back on the initial Search page maintaining the state of the results, text searc
 
 ## Architecture Description
 
-This React app is structured with index.tsx at the root. Index.tsx manages the 
+This React app uses CSS and Typescript and is structured with index.tsx at the root. Index.tsx manages the 
 routes and provides a global context for search functionality. 
 The SearchHomePage and BookDetailsPage are the main pages routed from 
 index.tsx. SearchHomePage integrates search-related components 
@@ -87,7 +87,8 @@ Some first steps to improve the application from this initial prototype would be
   -EditionCard and BookCard (could pass props instead)
 
   -PaginationEdition as pagination functionality used in both BookDetails for Edition as well as in the SearchForm for Books
-
+* Add framework to test React application (Jest with the React Testing Library) 
+to ensure works as expected and integrate with CI/CD pipeline
 
 ## Getting Started with Create React App
 

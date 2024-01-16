@@ -19,7 +19,6 @@
  * setTotalResults (function): Function to update the total number of search results.
  * searchTerms (SearchTerms): The search terms used in the query, including title, author, and subject.
  * setSearchTerms (function): Function to update the search terms.
- *
  * Usage:
  * Wrap the SearchProvider around components that need access to the search context.
  * Use the useContext hook with SearchContext to access and update the search-related state in child components.
@@ -45,7 +44,7 @@ interface SearchContextType {
     setSearchTerms: React.Dispatch<React.SetStateAction<SearchTerms>>;
 }
 
-// Provide default values for the context
+// Setting default values for the context
 export const SearchContext = createContext<SearchContextType>({
     searchResults: [],
     setSearchResults: () => {},

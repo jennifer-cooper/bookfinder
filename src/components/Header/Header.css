@@ -15,7 +15,6 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Ensure h3 inside header-banner doesn't affect other h3 elements */
 .header-banner h3 {
     margin-left: 20px;
     font-size: 26px;

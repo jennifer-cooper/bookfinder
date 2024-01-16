@@ -1,8 +1,8 @@
 /**
  * Header Component
  * Purpose:
- * - Header for the app.
- * - To provide consistent header/branding across pages.
+ * Header for the app.
+ * To provide consistent header/branding across pages.
  **/
 
 import React from 'react';

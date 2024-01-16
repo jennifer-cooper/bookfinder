@@ -4,15 +4,14 @@
  * BookDetailsPage serves as a page container for displaying detailed information about a specific book.
  * It uses the BookDetails component to render the book's details based on the provided book ID.
  * Functionality:
- * - The component uses the useParams hook from 'react-router-dom' to extract the book ID from the URL parameters.
+ * The component uses the useParams hook from 'react-router-dom' to extract the book ID from the URL parameters.
  * Children Components:
- * - Header: A reusable component that renders the header of the page.
- * - BookDetails: A component that takes a book ID as a prop and displays detailed information about the book.
- *
+ * Header: A reusable component that renders the header of the page.
+ * BookDetails: A component that takes a book ID as a prop and displays detailed information about the book.
  * Usage:
  *  E.g. Route Setup:
  * <Route path="/book/:id" element={<BookDetailsPage />} />
- * When a user navigates to a URL like '/book/11111', the BookDetailsPage will render and display details for the book with ID '11111'.
+ * e.g. when a user navigates to a URL like '/book/11111', the BookDetailsPage will render and display details for the book with ID '11111'.
  */
 
 import React from 'react';
@@ -21,13 +20,12 @@ import Header from "../../components/Header/Header";
 import BookDetails from '../../components/BookDetails/BookDetails';
 
 const BookDetailsPage = () => {
-    const { id } = useParams<{ id: string }>(); // Define the shape of params
+    const { id } = useParams<{ id: string }>();
 
-    // Render BookDetails only if id is defined
     return (
         <main>
             <Header />
-            <div className="main-content"> {/* Begin main content area */}
+            <div className="main-content">
                 {id ? <BookDetails id={id} /> : <p>Book ID not found.</p>}
             </div>
         </main>

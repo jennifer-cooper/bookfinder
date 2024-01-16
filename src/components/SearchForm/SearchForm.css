@@ -1,7 +1,7 @@
 * {
     box-sizing: border-box;
 }
-/* Overall container */
+
 .search-fields-container {
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
 }
 
 .inputs-and-button-container {
-    width: 75%; /* This is the wrapper for inputs and button */
+    width: 75%;
 }
 
 .input-field {
@@ -60,15 +60,15 @@ label {
 }
 
 .pagination {
-    display: flex; /* Aligns children (buttons) in a row */
-    gap: 10px; /* Adds some space between the buttons */
+    display: flex;
+    gap: 10px;
     padding-bottom: 20px;
 }
 
 .pagination-button {
-    padding: 5px 10px; /* Reduced padding for smaller buttons */
-    background-color: #B7075F; /* Pink background */
-    color: #fff; /* White text/icon */
+    padding: 5px 10px;
+    background-color: #B7075F;
+    color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -77,12 +77,11 @@ label {
 }
 
 .pagination-button:disabled {
-    background-color: #E8D4E3; /* Lighter shade of pink or gray */
-    color: #ccc; /* Grayed out arrow */
+    background-color: #E8D4E3;
+    color: #ccc;
     cursor: default;
 }
 
-/* Adjust the size of the icons if needed */
 .pagination-button svg {
-    font-size: 1rem; /* Adjust the size of the icon */
+    font-size: 1rem;
 }

@@ -6,17 +6,15 @@
     padding-right: 20px;
     padding-top: 1px;
     padding-bottom: 1px;
-    margin-bottom: 5px; /* Add space between cards */
+    margin-bottom: 5px;
     transition: box-shadow 0.3s ease;
     width:100%;
 }
 
-/* You can add more styling as per your design requirements */
-
 .edition-link {
-    color: #B7075F; /* Pink color */
+    color: #B7075F;
     font-size: 1.2rem;
-    margin-bottom: 10px; /* Space between title and author */
+    margin-bottom: 10px;
 
 }
 
@@ -32,15 +30,15 @@
 
 .year-publish {
     display: flex;
-    align-items: center; /* Align vertically */
-    justify-content: start; /* Align horizontally */
-    gap: 10px; /* Space between items */
+    align-items: center;
+    justify-content: start;
+    gap: 10px;
 }
 
 .language-isbn {
     display: flex;
-    justify-content: space-between; /* Align items to each side */
-    align-items: center; /* Align items vertically */
+    justify-content: space-between;
+    align-items: center;
 }
 
 .lang, .isbn{

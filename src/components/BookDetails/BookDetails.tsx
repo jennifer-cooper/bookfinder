@@ -1,7 +1,7 @@
 /**
  * BookDetails Component
  * Purpose:
- * Displays detailed information about a specific book based on selected ID.
+ * Displays detailed information about a specific book based on selected ID (key taken from the initial SearchQuery).
  * Shows the book's title, author(s), an expandable description, subjects, and edition cards.
  * Props:
  * id (string): The unique identifier for the book. Used to fetch book details and editions.
@@ -23,16 +23,16 @@
 import React, { useState, useEffect } from 'react';
 import "./BookDetails.css";
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos'
-import { useNavigate } from 'react-router-dom'; // Import useNavigate;
+import { useNavigate } from 'react-router-dom';
 import EditionCard from "../EditionCard/EditionCard";
 import PaginationEdition from "../PaginationEdition/PaginationEdition";
 
 
 interface BookDetailsData {
     title: string;
-    authors: { author: { key: string } }[]; // Updated to match the API response
+    authors: { author: { key: string } }[];
     description: string;
-    subjects: string[]; // Assuming this is included in your data structure
+    subjects: string[];
 }
 
 interface AuthorObject {
@@ -41,7 +41,7 @@ interface AuthorObject {
     };
 }
 interface BookDetailsProps {
-    id: string; // Add this to accept 'id' as a prop
+    id: string;
 }
 
 const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
@@ -51,7 +51,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const [totalResults, setTotalResults] = useState(0);
     const RESULTS_PER_PAGE = 10;
-    const [showFullDescription, setShowFullDescription] = useState(false); //adding state to toggle full description
+    const [showFullDescription, setShowFullDescription] = useState(false);
     const [authorNames, setAuthorNames] = useState<string[]>([]);
 
 
@@ -96,7 +96,7 @@ const BookDetails: React.FC<BookDetailsProps> = ({ id }) => {
                             return authorData.name;
                         })
                     );
-                    setAuthorNames(fetchedAuthorNames); // Update the state with fetched author names
+                    setAuthorNames(fetchedAuthorNames); // Update state with fetched author names
                 }
 
                 // Fetch editions

@@ -17,10 +17,10 @@ import { Link } from 'react-router-dom';
 import './BookCard.css';
 
 interface BookCardProps {
-    bookKey: string; // Renamed from key
+    bookKey: string;
     title: string;
     author: string;
-    editionCount: number; // Add this line
+    editionCount: number;
 
 }
 

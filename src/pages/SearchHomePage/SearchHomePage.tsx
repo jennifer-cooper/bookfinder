@@ -12,7 +12,9 @@
  * <Route path="/search" element={<SearchHomePage />}>
  *   <Route path="results" element={<SearchResults />} />
  * </Route>
- * In this setup, navigating to '/search' displays the SearchHomePage with the SearchContainer. If the URL changes to '/search/results', the SearchResults component will be rendered inside the SearchHomePage layout, thanks to the Outlet component.
+ * In this setup, navigating to '/search' displays the SearchHomePage with the SearchContainer.
+ * If the URL changes to '/search/results', the SearchResults component will be rendered inside
+ * the SearchHomePage layout, thanks to the Outlet component.
  */
 
 import React from 'react';

@@ -3,7 +3,7 @@
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     padding: 20px;
-    margin-bottom: 5px; /* Add space between cards */
+    margin-bottom: 5px;
     transition: box-shadow 0.3s ease;
     width:75%;
 
@@ -21,8 +21,8 @@
 .book-title {
     margin: 0;
     color: #333;
-    font-size: 1.2rem; /* A larger font size for the title */
-    margin-bottom: 10px; /* Space between title and author */
+    font-size: 1.2rem;
+    margin-bottom: 10px;
 }
 
 .book-author, .book-editions {
@@ -31,17 +31,15 @@
     font-size: 1rem;
 }
 
-/* You can add more styling as per your design requirements */
-
 .book-link {
-    color: #B7075F; /* Pink color */
+    color: #B7075F;
 }
 
 .book-link:hover {
-    opacity: 0.8; /* Slightly transparent on hover */
+    opacity: 0.8;
 }
 
 .book-editions {
-    margin-left: auto; /* This will push the editions to the right */
-    padding-right: 10px; /* Example padding, adjust as necessary */
+    margin-left: auto;
+    padding-right: 10px;
 }
