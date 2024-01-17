@@ -6,6 +6,8 @@ The bookfinder React App is a prototype book search application using the Open L
 
 Documentation for the Open Library APIs are found here: https://openlibrary.org/developers/api
 
+Find the current deployed site here hosted on GH Pages: https://jennifer-cooper.github.io/bookfinder/
+
 Two user stories were provided as a set of cucumber scenarios with the following features:
 - Book Search
 - Book Details
@@ -77,6 +79,22 @@ https://openlibrary.org/authors/OL12345A.json
 Language (object from editions results for language:"languages": [{"key": "/languages/eng"}]):
 https://openlibrary.org/languages/eng.json
 
+## Deployment
+Since this app uses the React Router the basename prop of BrowserRouter was amended to match the homepage path
+in the package.json (index.tsx).
+
+```<BrowserRouter basename={process.env.PUBLIC_URL}>```
+
+To build use:
+```npm run build```
+
+To deploy
+```npm run deploy```
+
+Deployed to GitHub pages:
+
+https://jennifer-cooper.github.io/bookfinder/
+
 ## Next Steps
 
 Some first steps to improve the application from this initial prototype would be the following:
@@ -89,6 +107,7 @@ Some first steps to improve the application from this initial prototype would be
   -PaginationEdition as pagination functionality used in both BookDetails for Edition as well as in the SearchForm for Books
 * Add framework to test React application (Jest with the React Testing Library) 
 to ensure works as expected and integrate with CI/CD pipeline
+* Add Github Action for automatic deployment
 
 ## Getting Started with Create React App
 

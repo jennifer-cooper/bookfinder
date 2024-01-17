@@ -27,7 +27,7 @@ import { SearchProvider} from "./contexts/SearchContext";
 const root = ReactDOM.createRoot(document.getElementById('root')!);
 root.render(
     <SearchProvider>
-        <BrowserRouter>
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
             <Routes>
                 <Route path="/" element={<SearchHomePage />} />
                 <Route path="book/:id" element={<BookDetailsPage />} />
